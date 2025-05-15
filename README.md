@@ -38,3 +38,4 @@ do not clone from this repository directly
 This repository is licensed under [your chosen license]. See the `LICENSE` file for more details.
 
 ---
+echo "Triggering workflow run " >> README.md
