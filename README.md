@@ -24,6 +24,10 @@ This repository will host the source code for a GitHub app designed to detect se
 ### **Getting Started**
 - TBD
 
+
+echo "Workflow test trigger" >> README.md
+
+
 ### **Contributing**
 ---
 #### IMPORTANT!!
