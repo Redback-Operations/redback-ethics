@@ -51,7 +51,7 @@ def get_sensitivity_level():
     print(" Select data sensitivity level:")
     print(" [1] Low (Public or non-sensitive)")
     print(" [2] Medium (Internal-use PII/NPI)")
-    print(" [3] High (Critical PII, PHI, Financial, Secrets)")
+    print(" [3] High (Critical PII, PHI, Financial, Secrets, Username & Password Combinations)")
     print(" [4] Mixed (Randomised levels)")
     while True:
         # Prompt user for input and validate it

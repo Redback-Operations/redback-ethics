@@ -52,6 +52,8 @@ class DummyDataGenerator:
             if self.sensitivity_label in ["High", "Mixed"]:
                 row["Date of Birth"] = self.fake.date_of_birth(minimum_age=18, maximum_age=90)  # Add a fake date of birth
                 row["SSN"] = self.fake.ssn()  # Add a fake SSN
+                row["Username"] = self.fake.user_name()  # Add a fake username
+                row["Password"] = self.fake.password()  # Add a fake password
 
             data.append(row)
 
