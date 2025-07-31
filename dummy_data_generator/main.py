@@ -3,8 +3,14 @@ import faker as faker
 from console_ui import *
 from file_generation import *
 
+# Import ConsoleUI class
+from console_ui import ConsoleUI
+
+# Create an instance of ConsoleUI
+ui = ConsoleUI()
+
 # Entry point of the script
-path, file_types, sensitivity, count = console_ui()
+path, file_types, sensitivity, count = ui.console_ui()
 
 # Change the working directory to the user-provided path, if a path was given
 if path != os.getcwd():  # Only change if the path is different from the current directory
@@ -17,4 +23,4 @@ generator = DummyDataGenerator(sensitivity)
 generate_selected_files(generator, file_types, count)
 
 # Print a completion message
-finish_ui()
+ui.finish_ui()
