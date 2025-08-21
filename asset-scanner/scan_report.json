@@ -1,0 +1,182 @@
+[
+  {
+    "pattern": "ssn",
+    "description": "Social Security Number",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 6,
+    "risk": "High",
+    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 32 \u2014 Security of processing",
+      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
+    ],
+    "raw": "655-27-1634"
+  },
+  {
+    "pattern": "ssn",
+    "description": "Social Security Number",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 11,
+    "risk": "High",
+    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 32 \u2014 Security of processing",
+      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
+    ],
+    "raw": "611-67-4016"
+  },
+  {
+    "pattern": "ssn",
+    "description": "Social Security Number",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 16,
+    "risk": "High",
+    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 32 \u2014 Security of processing",
+      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
+    ],
+    "raw": "300-43-2679"
+  },
+  {
+    "pattern": "ssn",
+    "description": "Social Security Number",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 21,
+    "risk": "High",
+    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 32 \u2014 Security of processing",
+      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
+    ],
+    "raw": "289-15-3333"
+  },
+  {
+    "pattern": "ssn",
+    "description": "Social Security Number",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 30,
+    "risk": "High",
+    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 32 \u2014 Security of processing",
+      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
+    ],
+    "raw": "792-69-6205"
+  },
+  {
+    "pattern": "ssn",
+    "description": "Social Security Number",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 41,
+    "risk": "High",
+    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 32 \u2014 Security of processing",
+      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
+    ],
+    "raw": "240-03-8617"
+  },
+  {
+    "pattern": "phone_number",
+    "description": "Australian Mobile Number (04## ### ###)",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 5,
+    "risk": "Low",
+    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "0428 906 097"
+  },
+  {
+    "pattern": "phone_number",
+    "description": "Australian Mobile Number (04## ### ###)",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 10,
+    "risk": "Low",
+    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "0404 880 936"
+  },
+  {
+    "pattern": "phone_number",
+    "description": "Australian Mobile Number (04## ### ###)",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 15,
+    "risk": "Low",
+    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "0467 198 395"
+  },
+  {
+    "pattern": "phone_number",
+    "description": "Australian Mobile Number (04## ### ###)",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 20,
+    "risk": "Low",
+    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "0454 657 868"
+  },
+  {
+    "pattern": "phone_number",
+    "description": "Australian Mobile Number (04## ### ###)",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 29,
+    "risk": "Low",
+    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "0488 496 625"
+  },
+  {
+    "pattern": "phone_number",
+    "description": "Australian Mobile Number (04## ### ###)",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 40,
+    "risk": "Low",
+    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "0410 822 561"
+  }
+]
