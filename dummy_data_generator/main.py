@@ -2,6 +2,7 @@ import pandas as pd
 import faker as faker
 from console_ui import *
 from file_generation import *
+from scanner_bot.scan_engine import RegexScanner
 
 # Entry point of the script
 path, file_types, sensitivity, count = console_ui()
