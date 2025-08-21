@@ -155,5 +155,26 @@
       "Privacy Act 1988 (Cth) — APP 11 (Security of personal information)",
       "Privacy Act 1988 (Cth) — Notifiable Data Breaches (Part IIIC)"
     ]
+  },
+  "address_au_with_pii": {
+    "level": "High",
+    "tip": "Treat full addresses combined with other identifiers as sensitive; mask or remove; restrict access and retention.",
+    "compliance": [
+      "Privacy Act 1988 (Cth) — APP 11 (Security of personal information)",
+      "GDPR Art. 4(1) — Personal data",
+      "GDPR Art. 5(1)(c) — Data minimisation",
+      "GDPR Art. 32 — Security of processing",
+      "Privacy Act 1988 (Cth) — Notifiable Data Breaches (Part IIIC)"
+    ]
+  },
+  "name_full": {
+    "level": "Low",
+    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
+    "compliance": [
+      "Privacy Act 1988 (Cth) — APP 11 (Security of personal information)",
+      "GDPR Art. 4(1) — Personal data",
+      "GDPR Art. 5(1)(c) — Data minimisation",
+      "GDPR Art. 32 — Security of processing"
+    ]
   }
 }

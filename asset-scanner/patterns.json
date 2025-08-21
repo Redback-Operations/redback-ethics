@@ -83,5 +83,20 @@
     "pattern": "(?i)(?:\\b(?:licen[cs]e|lic|dl|driver['’]s?\\s*licen[cs]e)\\s*(?:no\\.?|number)?\\s*[:#-]?\\s*)[A-Z0-9]{6,10}\\b",
     "risk": "High",
     "description": "Australian driver’s licence number (context-labelled to reduce false positives)"
+  },
+  "address_au": {
+    "pattern": "(?is)\\b\\d{1,5}\\s+[A-Za-z][A-Za-z’'\\-\\. ]+\\s+(?:St|Street|Rd|Road|Ave|Avenue|Blvd|Boulevard|Dr|Drive|Ln|Lane|Ct|Court|Pl|Place|Pde|Parade|Ter|Terrace|Way)\\b(?:,\\s*[A-Za-z][A-Za-z ’'\\-]+)?(?:,\\s*(?:VIC|NSW|QLD|SA|WA|TAS|ACT|NT))?(?:\\s+\\d{4})?(?!.{0,200}(?:\\bfull[_\\s-]?name\\b|\\bname\\b|[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,63}|\\+?[1-9]\\d{8,14}|\\bTFN\\b|\\bMedicare\\b|licen[cs]e|driver))",
+    "risk": "Low",
+    "description": "Australian street address (standalone)"
+  },
+  "address_au_with_pii": {
+    "pattern": "(?is)\\b\\d{1,5}\\s+[A-Za-z][A-Za-z’'\\-\\. ]+\\s+(?:St|Street|Rd|Road|Ave|Avenue|Blvd|Boulevard|Dr|Drive|Ln|Lane|Ct|Court|Pl|Place|Pde|Parade|Ter|Terrace|Way)\\b(?:,\\s*[A-Za-z][A-Za-z ’'\\-]+)?(?:,\\s*(?:VIC|NSW|QLD|SA|WA|TAS|ACT|NT))?(?:\\s+\\d{4})?(?=.{0,200}(?:\\bfull[_\\s-]?name\\b|\\bname\\b|[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,63}|\\+?[1-9]\\d{8,14}|\\bTFN\\b|\\bMedicare\\b|licen[cs]e|driver))",
+    "risk": "High",
+    "description": "Australian street address near other identifiers (name/email/phone/ID)"
+  },
+    "name_full": {
+    "pattern": "(?i)\\b(?:full[_\\s-]?name|name|first[_\\s-]?name|last[_\\s-]?name)\\s*[:=]\\s*['\"]?[A-Z][a-z]+(?:[ -][A-Z][a-z]+){1,3}['\"]?",
+    "risk": "Low",
+    "description": "Full name in a labeled field"
   }
 }
