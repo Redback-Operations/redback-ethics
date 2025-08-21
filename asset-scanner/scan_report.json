@@ -178,5 +178,112 @@
       "GDPR Art. 32 \u2014 Security of processing"
     ],
     "raw": "0410 822 561"
+  },
+  {
+    "pattern": "address_au",
+    "description": "Australian street address (standalone)",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 20,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "965 Christy Route\nSt"
+  },
+  {
+    "pattern": "name_full",
+    "description": "Full name in a labeled field",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 5,
+    "risk": "Low",
+    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+      "GDPR Art. 4(1) \u2014 Personal data",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "Name: Adam Carter"
+  },
+  {
+    "pattern": "name_full",
+    "description": "Full name in a labeled field",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 10,
+    "risk": "Low",
+    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+      "GDPR Art. 4(1) \u2014 Personal data",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "Name: Carolyn James"
+  },
+  {
+    "pattern": "name_full",
+    "description": "Full name in a labeled field",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 15,
+    "risk": "Low",
+    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+      "GDPR Art. 4(1) \u2014 Personal data",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "Name: Lori Hoffman"
+  },
+  {
+    "pattern": "name_full",
+    "description": "Full name in a labeled field",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 20,
+    "risk": "Low",
+    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+      "GDPR Art. 4(1) \u2014 Personal data",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "Name: Tara Baker"
+  },
+  {
+    "pattern": "name_full",
+    "description": "Full name in a labeled field",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 29,
+    "risk": "Low",
+    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+      "GDPR Art. 4(1) \u2014 Personal data",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "Name: Audrey Duran"
+  },
+  {
+    "pattern": "name_full",
+    "description": "Full name in a labeled field",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "line": 40,
+    "risk": "Low",
+    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+      "GDPR Art. 4(1) \u2014 Personal data",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing"
+    ],
+    "raw": "Name: Larry Morgan"
   }
 ]
