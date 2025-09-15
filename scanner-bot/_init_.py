@@ -1,0 +1,1 @@
+# Makes scanner-bot a package
