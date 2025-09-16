@@ -29,7 +29,7 @@ from reporter import write_report, generate_console_report
 
 # ---- Defaults (align with your repo) ----
 DEFAULT_PATTERNS_FILE = "patterns.json"
-DEFAULT_TARGET_EXTS = [".py", ".txt", ".md", ".cfg", ".json"]
+DEFAULT_TARGET_EXTS = [".py", ".txt", ".md", ".cfg", ".json", ".docx", ".csv", ".pdf", ".png", ".jpg", ".jpeg", ".tiff", ".tif", ".bmp", ".webp"]
 DEFAULT_OUT = "scan_report.json"
 
 # ---- Patterns ----
@@ -131,10 +131,10 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
 # Function to get a valid directory path from the user
 def get_valid_path():
     while True:
-        path = input("Enter the directory path to save the files (press Enter to save in the project folder): ").strip()
+        path = input("Enter the directory path containing the files to scan (press Enter to use the project folder): ").strip()
         path = path.strip('"').strip("'")  # Remove surrounding quotes if present
         if not path:  # If no input is provided, use the current directory
-            print("No path provided. Files will be saved in the project folder.")
+            print("No path provided. Files will be scanned in the project folder.")
             print("-" * 63)
             return os.getcwd()
         elif os.path.isdir(path):  # Validate the provided path

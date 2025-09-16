@@ -174,3 +174,4 @@ cython_debug/
 .pypirc
 .DS_Store
 dummy_data_generator/.DS_Store
+asset-scanner/.DS_Store
