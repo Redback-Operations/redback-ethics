@@ -1,0 +1,102 @@
+{
+  "email": {
+    "pattern": "[a-zA-Z0-9+._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}",
+    "risk": "Medium",
+    "description": "Email address"
+  },
+  "aws_access_key": {
+    "pattern": "AKIA[0-9A-Z]{16}",
+    "risk": "High",
+    "description": "AWS Access Key"
+  },
+  "aws_secret_access_key": {
+    "pattern": "[A-Za-z0-9/+=]{40}",
+    "risk": "High",
+    "description": "AWS Secret Access Key"
+  },
+  "gcp_service_account_key": {
+    "pattern": "-----BEGIN PRIVATE KEY-----[\\s\\S]+?-----END PRIVATE KEY-----",
+    "risk": "High",
+    "description": "GCP Service Account Private Key"
+  },
+  "azure_client_secret": {
+    "pattern": "[0-9a-zA-Z\\-_]{32,128}",
+    "risk": "High",
+    "description": "Azure Client Secret"
+  },
+  "ssh_private_key": {
+    "pattern": "-----BEGIN (?:RSA|DSA|EC|OPENSSH) PRIVATE KEY-----[\\s\\S]+?-----END (?:RSA|DSA|EC|OPENSSH) PRIVATE KEY-----",
+    "risk": "High",
+    "description": "SSH Private Key"
+  },
+  "jwt_secret": {
+    "pattern": "[A-Za-z0-9_-]{10,}\\.[A-Za-z0-9_-]{10,}\\.[A-Za-z0-9_-]{10,}",
+    "risk": "High",
+    "description": "JWT Token"
+  },
+  "api_token": {
+    "pattern": "[A-Za-z0-9\\-_=]{20,}",
+    "risk": "Medium",
+    "description": "Generic API Token"
+  },
+  "password": {
+    "pattern": "(?i)password\\s*[:=]\\s*['\"][^'\"]+['\"]",
+    "risk": "High",
+    "description": "Hard-coded Password"
+  },
+  "credit_card": {
+    "pattern": "\\b(?:\\d[ -]*?){13,16}\\b",
+    "risk": "High",
+    "description": "Credit Card Number"
+  },
+  "ssn": {
+    "pattern": "\\b\\d{3}-\\d{2}-\\d{4}\\b",
+    "risk": "High",
+    "description": "Social Security Number"
+  },
+  "phone_number": {
+  "pattern": "\\b04\\d{2}\\s?\\d{3}\\s?\\d{3}\\b",
+  "risk": "Medium",
+  "description": "Australian Mobile Number (04## ### ###)"
+  },
+  "ip_address": {
+    "pattern": "\\b(?:[0-9]{1,3}\\.){3}[0-9]{1,3}\\b",
+    "risk": "Low",
+    "description": "IPv4 Address"
+  },
+  "database_connection_string": {
+    "pattern": "(?i)(?:jdbc:[^\\s']+|postgresql://[^\\s']+|mysql://[^\\s']+|mongodb:[^\\s']+)",
+    "risk": "High",
+    "description": "Database Connection String"
+  },
+  "tfn": {
+    "pattern": "\\b\\d{3}\\s?\\d{3}\\s?\\d{3}\\b",
+    "risk": "High",
+    "description": "Australian Tax File Number (TFN) — 9 digits (validate with checksum in code)"
+  },
+  "medicare_number": {
+    "pattern": "\\b\\d{4}\\s?\\d{5}\\s?\\d{1}(?:\\s?\\d)?\\b",
+    "risk": "High",
+    "description": "Medicare card number (10 digits + optional 1-digit IRN)"
+  },
+  "drivers_licence_number": {
+    "pattern": "(?i)(?:\\b(?:licen[cs]e|lic|dl|driver['’]s?\\s*licen[cs]e)\\s*(?:no\\.?|number)?\\s*[:#-]?\\s*)[A-Z0-9]{6,10}\\b",
+    "risk": "High",
+    "description": "Australian driver’s licence number (context-labelled to reduce false positives)"
+  },
+  "address_au": {
+    "pattern": "(?is)\\b\\d{1,5}\\s+[A-Za-z][A-Za-z’'\\-\\. ]+\\s+(?:St|Street|Rd|Road|Ave|Avenue|Blvd|Boulevard|Dr|Drive|Ln|Lane|Ct|Court|Pl|Place|Pde|Parade|Ter|Terrace|Way)\\b(?:,\\s*[A-Za-z][A-Za-z ’'\\-]+)?(?:,\\s*(?:VIC|NSW|QLD|SA|WA|TAS|ACT|NT))?(?:\\s+\\d{4})?(?!.{0,200}(?:\\bfull[_\\s-]?name\\b|\\bname\\b|[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,63}|\\+?[1-9]\\d{8,14}|\\bTFN\\b|\\bMedicare\\b|licen[cs]e|driver))",
+    "risk": "Low",
+    "description": "Australian street address (standalone)"
+  },
+  "address_au_with_pii": {
+    "pattern": "(?is)\\b\\d{1,5}\\s+[A-Za-z][A-Za-z’'\\-\\. ]+\\s+(?:St|Street|Rd|Road|Ave|Avenue|Blvd|Boulevard|Dr|Drive|Ln|Lane|Ct|Court|Pl|Place|Pde|Parade|Ter|Terrace|Way)\\b(?:,\\s*[A-Za-z][A-Za-z ’'\\-]+)?(?:,\\s*(?:VIC|NSW|QLD|SA|WA|TAS|ACT|NT))?(?:\\s+\\d{4})?(?=.{0,200}(?:\\bfull[_\\s-]?name\\b|\\bname\\b|[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,63}|\\+?[1-9]\\d{8,14}|\\bTFN\\b|\\bMedicare\\b|licen[cs]e|driver))",
+    "risk": "High",
+    "description": "Australian street address near other identifiers (name/email/phone/ID)"
+  },
+    "name_full": {
+    "pattern": "(?i)\\b(?:full[_\\s-]?name|name|first[_\\s-]?name|last[_\\s-]?name)\\s*[:=]\\s*['\"]?[A-Z][a-z]+(?:[ -][A-Z][a-z]+){1,3}['\"]?",
+    "risk": "Low",
+    "description": "Full name in a labeled field"
+  }
+}
