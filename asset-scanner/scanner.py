@@ -29,7 +29,7 @@ from reporter import write_report, generate_console_report
 
 # ---- Defaults (align with your repo) ----
 DEFAULT_PATTERNS_FILE = "patterns.json"
-DEFAULT_TARGET_EXTS = [".py", ".txt", ".md", ".cfg", ".json"]
+DEFAULT_TARGET_EXTS = [".py", ".txt", ".md", ".cfg", ".json", ".docx", ".csv", ".pdf", ".png", ".jpg", ".jpeg", ".tiff", ".tif", ".bmp", ".webp"]
 DEFAULT_OUT = "scan_report.json"
 
 # ---- Patterns ----
@@ -120,6 +120,7 @@ def scan_paths(paths: Iterable[str],
 
 def parse_args(argv: List[str]) -> argparse.Namespace:
     ap = argparse.ArgumentParser(description="Unified sensitive-data scanner")
+    ap.add_argument("--file", help="Single file to scan (overrides --root and --ext)")
     ap.add_argument("--root", default=".", help="Root directory to scan (default: current dir)")
     ap.add_argument("--patterns", default=DEFAULT_PATTERNS_FILE, help="Path to patterns.json")
     ap.add_argument("--out", default=DEFAULT_OUT, help="Path to JSON report output")
@@ -131,10 +132,10 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
 # Function to get a valid directory path from the user
 def get_valid_path():
     while True:
-        path = input("Enter the directory path to save the files (press Enter to save in the project folder): ").strip()
+        path = input("Enter the directory path containing the files to scan (press Enter to use the project folder): ").strip()
         path = path.strip('"').strip("'")  # Remove surrounding quotes if present
         if not path:  # If no input is provided, use the current directory
-            print("No path provided. Files will be saved in the project folder.")
+            print("No path provided. Files will be scanned in the project folder.")
             print("-" * 63)
             return os.getcwd()
         elif os.path.isdir(path):  # Validate the provided path
@@ -152,12 +153,23 @@ def main(argv: List[str] | None = None) -> int:
     patterns = load_patterns(ns.patterns)
     compiled = compile_patterns(patterns)
 
-    # Identify valid directory to scan
-    directory = get_valid_path()
+    # Check if a specific file is provided
+    if ns.file:
+        # Validate the file path
+        if not os.path.isfile(ns.file):
+            print(f"[!] The specified file does not exist: {ns.file}")
+            return 1
 
-    # Use project helper to expand files under root with extension filter
-    file_list = list(find_files(directory, ns.ext))
-    findings = scan_paths(file_list, compiled, patterns)
+        # Scan only the specified file
+        print(f"[i] Scanning the specified file: {ns.file}")
+        findings = scan_paths([ns.file], compiled, patterns)
+    else:
+        # Identify valid directory to scan
+        directory = get_valid_path()
+
+        # Use project helper to expand files under root with extension filter
+        file_list = list(find_files(directory, ns.ext))
+        findings = scan_paths(file_list, compiled, patterns)
 
     # JSON report (enriched with risk/tip/laws by reporter.write_report)
     enriched = write_report(findings, out_path=ns.out)

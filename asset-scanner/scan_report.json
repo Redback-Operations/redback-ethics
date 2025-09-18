@@ -1,9 +1,9 @@
 [
   {
     "pattern": "ssn",
-    "description": "Social Security Number",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 6,
+    "description": "US Social Security Number",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
+    "line": 18,
     "risk": "High",
     "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
     "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
@@ -12,13 +12,13 @@
       "GDPR Art. 32 \u2014 Security of processing",
       "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
     ],
-    "raw": "655-27-1634"
+    "raw": "854-67-0739"
   },
   {
     "pattern": "ssn",
-    "description": "Social Security Number",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 11,
+    "description": "US Social Security Number",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
+    "line": 28,
     "risk": "High",
     "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
     "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
@@ -27,73 +27,13 @@
       "GDPR Art. 32 \u2014 Security of processing",
       "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
     ],
-    "raw": "611-67-4016"
+    "raw": "889-46-3504"
   },
   {
-    "pattern": "ssn",
-    "description": "Social Security Number",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
+    "pattern": "phone_number",
+    "description": "Australian mobile number (04## ### ###)",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
     "line": 16,
-    "risk": "High",
-    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11",
-      "GDPR Art. 32 \u2014 Security of processing",
-      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
-    ],
-    "raw": "300-43-2679"
-  },
-  {
-    "pattern": "ssn",
-    "description": "Social Security Number",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 21,
-    "risk": "High",
-    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11",
-      "GDPR Art. 32 \u2014 Security of processing",
-      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
-    ],
-    "raw": "289-15-3333"
-  },
-  {
-    "pattern": "ssn",
-    "description": "Social Security Number",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 30,
-    "risk": "High",
-    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11",
-      "GDPR Art. 32 \u2014 Security of processing",
-      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
-    ],
-    "raw": "792-69-6205"
-  },
-  {
-    "pattern": "ssn",
-    "description": "Social Security Number",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 41,
-    "risk": "High",
-    "tip": "Remove or mask SSNs; handle only within strictly controlled, compliant systems.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11",
-      "GDPR Art. 32 \u2014 Security of processing",
-      "California Civil Code \u00a7 1798.85 \u2014 SSN confidentiality (if applicable)"
-    ],
-    "raw": "240-03-8617"
-  },
-  {
-    "pattern": "phone_number",
-    "description": "Australian Mobile Number (04## ### ###)",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 5,
     "risk": "Low",
     "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
     "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
@@ -102,13 +42,13 @@
       "GDPR Art. 5(1)(c) \u2014 Data minimisation",
       "GDPR Art. 32 \u2014 Security of processing"
     ],
-    "raw": "0428 906 097"
+    "raw": "0448 368 249"
   },
   {
     "pattern": "phone_number",
-    "description": "Australian Mobile Number (04## ### ###)",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 10,
+    "description": "Australian mobile number (04## ### ###)",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
+    "line": 26,
     "risk": "Low",
     "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
     "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
@@ -117,84 +57,13 @@
       "GDPR Art. 5(1)(c) \u2014 Data minimisation",
       "GDPR Art. 32 \u2014 Security of processing"
     ],
-    "raw": "0404 880 936"
-  },
-  {
-    "pattern": "phone_number",
-    "description": "Australian Mobile Number (04## ### ###)",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 15,
-    "risk": "Low",
-    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11",
-      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
-      "GDPR Art. 32 \u2014 Security of processing"
-    ],
-    "raw": "0467 198 395"
-  },
-  {
-    "pattern": "phone_number",
-    "description": "Australian Mobile Number (04## ### ###)",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 20,
-    "risk": "Low",
-    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11",
-      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
-      "GDPR Art. 32 \u2014 Security of processing"
-    ],
-    "raw": "0454 657 868"
-  },
-  {
-    "pattern": "phone_number",
-    "description": "Australian Mobile Number (04## ### ###)",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 29,
-    "risk": "Low",
-    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11",
-      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
-      "GDPR Art. 32 \u2014 Security of processing"
-    ],
-    "raw": "0488 496 625"
-  },
-  {
-    "pattern": "phone_number",
-    "description": "Australian Mobile Number (04## ### ###)",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 40,
-    "risk": "Low",
-    "tip": "Obfuscate where possible; avoid logging full numbers; limit retention.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11",
-      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
-      "GDPR Art. 32 \u2014 Security of processing"
-    ],
-    "raw": "0410 822 561"
-  },
-  {
-    "pattern": "address_au",
-    "description": "Australian street address (standalone)",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 20,
-    "risk": "Low",
-    "tip": "Follow secure handling and removal procedures.",
-    "law": "General Best Practice",
-    "compliance": [],
-    "raw": "965 Christy Route\nSt"
+    "raw": "0412 522 261"
   },
   {
     "pattern": "name_full",
-    "description": "Full name in a labeled field",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 5,
+    "description": "Full name in a labelled field",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
+    "line": 16,
     "risk": "Low",
     "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
     "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
@@ -204,13 +73,13 @@
       "GDPR Art. 5(1)(c) \u2014 Data minimisation",
       "GDPR Art. 32 \u2014 Security of processing"
     ],
-    "raw": "Name: Adam Carter"
+    "raw": "Name: Amy Nguyen"
   },
   {
     "pattern": "name_full",
-    "description": "Full name in a labeled field",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 10,
+    "description": "Full name in a labelled field",
+    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
+    "line": 26,
     "risk": "Low",
     "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
     "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
@@ -220,70 +89,6 @@
       "GDPR Art. 5(1)(c) \u2014 Data minimisation",
       "GDPR Art. 32 \u2014 Security of processing"
     ],
-    "raw": "Name: Carolyn James"
-  },
-  {
-    "pattern": "name_full",
-    "description": "Full name in a labeled field",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 15,
-    "risk": "Low",
-    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
-      "GDPR Art. 4(1) \u2014 Personal data",
-      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
-      "GDPR Art. 32 \u2014 Security of processing"
-    ],
-    "raw": "Name: Lori Hoffman"
-  },
-  {
-    "pattern": "name_full",
-    "description": "Full name in a labeled field",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 20,
-    "risk": "Low",
-    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
-      "GDPR Art. 4(1) \u2014 Personal data",
-      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
-      "GDPR Art. 32 \u2014 Security of processing"
-    ],
-    "raw": "Name: Tara Baker"
-  },
-  {
-    "pattern": "name_full",
-    "description": "Full name in a labeled field",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 29,
-    "risk": "Low",
-    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
-      "GDPR Art. 4(1) \u2014 Personal data",
-      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
-      "GDPR Art. 32 \u2014 Security of processing"
-    ],
-    "raw": "Name: Audrey Duran"
-  },
-  {
-    "pattern": "name_full",
-    "description": "Full name in a labeled field",
-    "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/dummy_txt_4_20250821_154649_299147.txt",
-    "line": 40,
-    "risk": "Low",
-    "tip": "Mask or omit full names in code/logs unless strictly required; minimise collection and retention.",
-    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
-    "compliance": [
-      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
-      "GDPR Art. 4(1) \u2014 Personal data",
-      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
-      "GDPR Art. 32 \u2014 Security of processing"
-    ],
-    "raw": "Name: Larry Morgan"
+    "raw": "Name: Nicole Williams"
   }
 ]

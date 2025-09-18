@@ -26,11 +26,11 @@ class DummyDataGenerator:
             if self.sensitivity_label == "Low":
                 return f"Name: {self.fake.name()}, Email: {self.fake.email()}"
             elif self.sensitivity_label == "Medium":
-                return f"Phone: {self.fake.phone_number()}, Address: {self.fake.address()}"
+                return f"Phone: {self.fake.numerify("04## ### ###")}, Address: {self.fake.address()}"
             elif self.sensitivity_label == "High":
                 return f"SSN: {self.fake.ssn()}, Credit Card: {self.fake.credit_card_number()}"
             elif self.sensitivity_label == "Mixed":
-                return (f"Name: {self.fake.name()}, Phone: {self.fake.phone_number()}, "
+                return (f"Name: {self.fake.name()}, Phone: {self.fake.numerify("04## ### ###")}, "
                         f"Address: {self.fake.address()}, SSN: {self.fake.ssn()}")
         # Return None if no sensitive data should be generated
         return None
@@ -47,11 +47,13 @@ class DummyDataGenerator:
                 "Email": self.fake.email()  # Generate a fake email
             }
             if self.sensitivity_label in ["Medium", "High", "Mixed"]:
-                row["Phone"] = self.fake.phone_number()  # Add a fake phone number
+                row["Phone"] = self.fake.numerify("04## ### ###")  # Add a fake phone number
                 row["Address"] = self.fake.address()  # Add a fake address
             if self.sensitivity_label in ["High", "Mixed"]:
                 row["Date of Birth"] = self.fake.date_of_birth(minimum_age=18, maximum_age=90)  # Add a fake date of birth
                 row["SSN"] = self.fake.ssn()  # Add a fake SSN
+                row["Username"] = self.fake.user_name()  # Add a fake username
+                row["Password"] = self.fake.password()  # Add a fake password
 
             data.append(row)
 
@@ -92,7 +94,7 @@ class DummyDataGenerator:
 
             # Add additional sensitive data based on the sensitivity label
             if self.sensitivity_label in ["Medium", "High", "Mixed"]:
-                profile["profile"]["phone"] = self.fake.phone_number()  # Add a fake phone number
+                profile["profile"]["phone"] = self.fake.numerify("04## ### ###")  # Add a fake phone number
                 profile["profile"]["address"] = self.fake.address()  # Add a fake address
             if self.sensitivity_label in ["High", "Mixed"]:
                 profile["profile"]["dob"] = str(self.fake.date_of_birth(minimum_age=18, maximum_age=90))  # Add a fake date of birth
