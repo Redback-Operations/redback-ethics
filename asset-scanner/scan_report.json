@@ -1,7 +1,7 @@
 [
   {
     "pattern": "ssn",
-    "description": "Social Security Number",
+    "description": "US Social Security Number",
     "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
     "line": 18,
     "risk": "High",
@@ -16,7 +16,7 @@
   },
   {
     "pattern": "ssn",
-    "description": "Social Security Number",
+    "description": "US Social Security Number",
     "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
     "line": 28,
     "risk": "High",
@@ -31,7 +31,7 @@
   },
   {
     "pattern": "phone_number",
-    "description": "Australian Mobile Number (04## ### ###)",
+    "description": "Australian mobile number (04## ### ###)",
     "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
     "line": 16,
     "risk": "Low",
@@ -46,7 +46,7 @@
   },
   {
     "pattern": "phone_number",
-    "description": "Australian Mobile Number (04## ### ###)",
+    "description": "Australian mobile number (04## ### ###)",
     "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
     "line": 26,
     "risk": "Low",
@@ -61,7 +61,7 @@
   },
   {
     "pattern": "name_full",
-    "description": "Full name in a labeled field",
+    "description": "Full name in a labelled field",
     "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
     "line": 16,
     "risk": "Low",
@@ -77,7 +77,7 @@
   },
   {
     "pattern": "name_full",
-    "description": "Full name in a labeled field",
+    "description": "Full name in a labelled field",
     "file": "/Users/mitchelltuininga/Documents/GitHub/generated_files/Screenshot 2025-09-16 at 2.40.04\u202fpm.png",
     "line": 26,
     "risk": "Low",

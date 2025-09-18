@@ -120,6 +120,7 @@ def scan_paths(paths: Iterable[str],
 
 def parse_args(argv: List[str]) -> argparse.Namespace:
     ap = argparse.ArgumentParser(description="Unified sensitive-data scanner")
+    ap.add_argument("--file", help="Single file to scan (overrides --root and --ext)")
     ap.add_argument("--root", default=".", help="Root directory to scan (default: current dir)")
     ap.add_argument("--patterns", default=DEFAULT_PATTERNS_FILE, help="Path to patterns.json")
     ap.add_argument("--out", default=DEFAULT_OUT, help="Path to JSON report output")
@@ -152,12 +153,23 @@ def main(argv: List[str] | None = None) -> int:
     patterns = load_patterns(ns.patterns)
     compiled = compile_patterns(patterns)
 
-    # Identify valid directory to scan
-    directory = get_valid_path()
+    # Check if a specific file is provided
+    if ns.file:
+        # Validate the file path
+        if not os.path.isfile(ns.file):
+            print(f"[!] The specified file does not exist: {ns.file}")
+            return 1
 
-    # Use project helper to expand files under root with extension filter
-    file_list = list(find_files(directory, ns.ext))
-    findings = scan_paths(file_list, compiled, patterns)
+        # Scan only the specified file
+        print(f"[i] Scanning the specified file: {ns.file}")
+        findings = scan_paths([ns.file], compiled, patterns)
+    else:
+        # Identify valid directory to scan
+        directory = get_valid_path()
+
+        # Use project helper to expand files under root with extension filter
+        file_list = list(find_files(directory, ns.ext))
+        findings = scan_paths(file_list, compiled, patterns)
 
     # JSON report (enriched with risk/tip/laws by reporter.write_report)
     enriched = write_report(findings, out_path=ns.out)
