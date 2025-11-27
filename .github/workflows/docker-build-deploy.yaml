@@ -12,6 +12,9 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
+      - name: Install presidio-analyzer
+        run: pip install presidio-analyzer
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
