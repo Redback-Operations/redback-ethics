@@ -30,9 +30,3 @@ jobs:
         run: |
           source venv/bin/activate
           python main.py
-
-      - name: Upload scan report
-        uses: actions/upload-artifact@v2
-        with:
-          name: scan_report
-          path: reports/scan_report.json
