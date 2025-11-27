@@ -32,8 +32,7 @@ jobs:
       - name: Run scan
         run: |
           source venv/bin/activate
-          python asset-scanner/scanner.py --root . --out $RUNNER_TEMP/scan_report.json --no-console --ext .py .md .txt
-
+          python main.py
 
       ##- name: Upload scan report
       ##  uses: actions/upload-artifact@v4
