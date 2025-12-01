@@ -1,6 +1,6 @@
 presidio-analyzer
 presidio-anonymizer
-spacy==3.6.1
+spacy==3.8.2
 defusedxml==0.7.1
 Faker==37.1.0
 fonttools==4.57.0
