@@ -1,0 +1,20 @@
+# PII & Secrets Scanner - do not commit files
+scan_report.json
+scan_report.local.json
+scan_report.shareable.json
+*.local.json
+local_scan_*.json
+temp_report_*.json
+
+# ignore any backup or temp reports
+*.json.bak
+*.json.tmp
+
+# Optional: ignore the raw findings before enrichment (if you ever dump them)
+raw_findings.json
+debug_scan.json
+
+# OS / editor 
+.DS_Store
+Thumbs.db
+*.log
