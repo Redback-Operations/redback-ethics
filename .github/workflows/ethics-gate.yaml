@@ -87,7 +87,7 @@ jobs:
           # Expose the answers (trim to avoid huge output)
           echo "answers=$(echo "$ANSWERS" | head -c 32768 | sed -e 's/"/'"'"'"/g')" >> $GITHUB_OUTPUT
 
-      - name: Run ethics parser & evaluator (safe: runs code from base repo)
+      - name: Run ethics parser & evaluator (safe runs code from base repo)
         id: run_engine
         env:
           PR_NUMBER: ${{ steps.prnumber.outputs.pr_number }}
