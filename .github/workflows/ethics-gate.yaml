@@ -1,0 +1,99 @@
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  pull_request_review_comment:
+    types: [created]
+
+permissions:
+  contents: read          # needed for checkout
+  pull-requests: write    # needed for commenting & reviews (gh)
+  checks: write           # needed for check runs
+
+jobs:
+  require-ethics-questionnaire:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    outputs:
+      ethics_status: ${{ steps.check.outputs.status }}
+    steps:
+      - name: Checkout PR head (so .github/ files exist)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Check if questionnaire already answered
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Look for bot comment or issue form submission (be robust to empty output)
+          RESPONSES=$(gh pr view ${{ github.event.pull_request.number }} --json comments --jq '.comments[].body' 2>/dev/null | grep -i "Ethics & Regulatory Questionnaire" -A 20 || true)
+          if [[ -z "$RESPONSES" ]]; then
+            echo "status=missing" >> $GITHUB_OUTPUT
+          else
+            echo "status=answered" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post questionnaire if missing
+        if: steps.check.outputs.status == 'missing'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body-file .github/ETHICS_QUESTIONNAIRE.md
+          echo "Please fill out the ethical/regulatory questionnaire above before this PR can be merged."
+
+  ethics-engine:
+    needs: require-ethics-questionnaire
+    if: >
+      needs.require-ethics-questionnaire.outputs.ethics_status == 'answered' ||
+      github.event_name == 'pull_request_review_comment'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head (engine needs code + workflow files)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Parse latest ethics comment & run engine
+        id: engine
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Collect comments (be robust if there are none)
+          ANSWERS=$(gh pr view ${{ github.event.pull_request.number }} --json comments --jq '[.comments[].body] | join("\n\n")' 2>/dev/null || true)
+          python .github/workflows/parse_and_evaluate.py "$ANSWERS" > result.txt || true
+          cat result.txt
+          RISK=$(grep RISK_LEVEL result.txt | cut -d= -f2 || echo "LOW")
+          echo "risk=$RISK" >> $GITHUB_OUTPUT
+
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const risk = "${{ steps.engine.outputs.risk }}".trim();
+            const conclusions = {
+              "LOW":    "success",
+              "MEDIUM": "action_required",
+              "HIGH":   "failure"
+            };
+            const conclusion = conclusions[risk] || "failure";
+
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: "Ethics Review",
+              head_sha: (context.payload.pull_request && context.payload.pull_request.head && context.payload.pull_request.head.sha) || github.event.pull_request.head.sha,
+              status: "completed",
+              conclusion,
+              output: {
+                title: risk === "LOW" ? "Ethics cleared" : `Ethics review: ${risk}`,
+                summary: risk === "LOW" ? "Low risk – automatically approved" : `Risk level ${risk} – review required`
+              }
+            });
+
+      - name: Block merge on HIGH risk
+        if: steps.engine.outputs.risk == 'HIGH'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr review ${{ github.event.pull_request.number }} \
+            --request-changes \
+            -b "@ethics-team Required manual review for high-risk change"

@@ -1,0 +1,23 @@
+name: Ethics & Regulatory Questionnaire
+description: Required for all PRs with potential ethical/regulatory impact
+title: "[Ethics Review] <PR title>"
+body:
+  - type: checkboxes
+    attributes:
+      label: Scope of Change
+      options:
+        - label: Involves training or inference of AI/ML models
+        - label: Processes personal data (PII, health, financial, etc.)
+        - label: Dual-use potential (could be used in weapons/autonomous systems)
+        - label: Affects safety-critical systems
+        - label: Purely documentation / tests / CI changes (safe)
+
+  - type: textarea
+    attributes:
+      label: Description of ethical/regulatory impact (if any)
+      placeholder: Explain who might be harmed, fairness implications, compliance requirements, etc.
+
+  - type: dropdown
+    attributes:
+      label: Have you consulted the relevant regulatory framework?
+      options: ["Yes", "No", "Not applicable"]
