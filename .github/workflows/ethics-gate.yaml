@@ -38,7 +38,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr comment ${{ github.event.pull_request.number }} --body-file .github/ETHICS_QUESTIONNAIRE.md
+          gh pr comment ${{ github.event.pull_request.number }} --body-file .github/ETHICS_QUESTIONNAIRE.MD
           echo "Please fill out the ethical/regulatory questionnaire above before this PR can be merged."
 
   ethics-engine:
