@@ -1,32 +1,36 @@
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, reopened, synchronize]
-  pull_request_review_comment:
+  issue_comment:
     types: [created]
 
 permissions:
   contents: read          # needed for checkout
-  pull-requests: write    # needed for commenting & reviews (gh)
-  checks: write           # needed for check runs
+  pull-requests: write    # needed for commenting & reviews (gh) when running in pull_request_target
+  checks: write           # needed to create check runs
 
 jobs:
-  require-ethics-questionnaire:
-    if: github.event.pull_request.draft == false
+  # Job that posts the questionnaire (runs in the trusted pull_request_target context).
+  post-questionnaire:
+    if: github.event_name == 'pull_request_target' && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
-    outputs:
-      ethics_status: ${{ steps.check.outputs.status }}
     steps:
-      - name: Checkout PR head (so .github/ files exist)
+      - name: Checkout base repo (safe; do NOT checkout PR head here)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 0
+
+      - name: Authenticate gh CLI with GITHUB_TOKEN
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
       - name: Check if questionnaire already answered
         id: check
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Look for bot comment or issue form submission (be robust to empty output)
-          RESPONSES=$(gh pr view ${{ github.event.pull_request.number }} --json comments --jq '.comments[].body' 2>/dev/null | grep -i "Ethics & Regulatory Questionnaire" -A 20 || true)
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          # Collect PR comments (robust to empty output)
+          RESPONSES=$(gh pr view "$PR_NUMBER" --json comments --jq '.comments[].body' 2>/dev/null | grep -i "Ethics & Regulatory Questionnaire" -A 20 || true)
           if [[ -z "$RESPONSES" ]]; then
             echo "status=missing" >> $GITHUB_OUTPUT
           else
@@ -35,52 +39,89 @@ jobs:
 
       - name: Post questionnaire if missing
         if: steps.check.outputs.status == 'missing'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # ensure file exists in the base repo checkout (case-sensitive)
+          if [[ ! -f .github/ETHICS_QUESTIONNAIRE.MD ]]; then
+            echo ".github/ETHICS_QUESTIONNAIRE.MD not found in base repo; aborting." >&2
+            exit 1
+          fi
           gh pr comment ${{ github.event.pull_request.number }} --body-file .github/ETHICS_QUESTIONNAIRE.MD
-          echo "Please fill out the ethical/regulatory questionnaire above before this PR can be merged."
+          echo "Posted ethics questionnaire to PR #${{ github.event.pull_request.number }}."
 
+  # Ethics engine: collects comments, runs evaluation, posts a check, and requests changes for HIGH risk.
+  # This job runs in the trusted context for pull_request_target and also on issue_comment (untrusted).
+  # For untrusted issue_comment runs, write actions (requesting changes) may be skipped if permissions are restricted.
   ethics-engine:
-    needs: require-ethics-questionnaire
-    if: >
-      needs.require-ethics-questionnaire.outputs.ethics_status == 'answered' ||
-      github.event_name == 'pull_request_review_comment'
     runs-on: ubuntu-latest
+    needs: post-questionnaire
     steps:
-      - name: Checkout PR head (engine needs code + workflow files)
+      - name: Checkout base repo (we run parser from base repo)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.base.sha || github.ref }}
+          fetch-depth: 0
 
-      - name: Parse latest ethics comment & run engine
-        id: engine
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate gh CLI with GITHUB_TOKEN
         run: |
-          # Collect comments (be robust if there are none)
-          ANSWERS=$(gh pr view ${{ github.event.pull_request.number }} --json comments --jq '[.comments[].body] | join("\n\n")' 2>/dev/null || true)
-          python .github/workflows/parse_and_evaluate.py "$ANSWERS" > result.txt || true
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+      - name: Determine PR number
+        id: prnumber
+        run: |
+          # Determine PR number whether triggered by pull_request_target or issue_comment
+          PR_NUMBER=$(jq -r 'if .pull_request then .pull_request.number elif .issue then .issue.number else empty end' "$GITHUB_EVENT_PATH")
+          if [[ -z "$PR_NUMBER" ]]; then
+            echo "No PR number found in event payload; exiting."
+            echo "risk=UNKNOWN" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: Collect comments
+        id: collect
+        run: |
+          PR=${{ steps.prnumber.outputs.pr_number }}
+          # Gather all PR comments into a single string (robust to empty)
+          ANSWERS=$(gh pr view "$PR" --json comments --jq '[.comments[].body] | join("\n\n")' 2>/dev/null || true)
+          echo "$ANSWERS" > answers.txt
+          # Expose the answers (trim to avoid huge output)
+          echo "answers=$(echo "$ANSWERS" | head -c 32768 | sed -e 's/"/'"'"'"/g')" >> $GITHUB_OUTPUT
+
+      - name: Run ethics parser & evaluator (safe: runs code from base repo)
+        id: run_engine
+        env:
+          PR_NUMBER: ${{ steps.prnumber.outputs.pr_number }}
+        run: |
+          # Ensure parser exists
+          if [[ ! -f .github/workflows/parse_and_evaluate.py ]]; then
+            echo "Parser .github/workflows/parse_and_evaluate.py not found in base repo; aborting."
+            echo "RISK_LEVEL=UNKNOWN" > result.txt
+          else
+            python3 .github/workflows/parse_and_evaluate.py "$(cat answers.txt)" > result.txt || true
+          fi
           cat result.txt
-          RISK=$(grep RISK_LEVEL result.txt | cut -d= -f2 || echo "LOW")
+          # Extract RISK_LEVEL=XYZ from result.txt if present
+          RISK=$(grep -m1 '^RISK_LEVEL=' result.txt | cut -d= -f2 || echo "LOW")
           echo "risk=$RISK" >> $GITHUB_OUTPUT
 
-      - uses: actions/github-script@v7
+      - name: Create/update "Ethics Review" check run
+        uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const risk = "${{ steps.engine.outputs.risk }}".trim();
+            const risk = "${{ steps.run_engine.outputs.risk }}".trim();
             const conclusions = {
               "LOW":    "success",
               "MEDIUM": "action_required",
               "HIGH":   "failure"
             };
             const conclusion = conclusions[risk] || "failure";
-
+            const head_sha = (context.payload.pull_request && context.payload.pull_request.head && context.payload.pull_request.head.sha) || (context.payload.issue && context.payload.issue.pull_request && context.payload.issue.number ? undefined : undefined) || github.event.pull_request?.head?.sha;
             await github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               name: "Ethics Review",
-              head_sha: (context.payload.pull_request && context.payload.pull_request.head && context.payload.pull_request.head.sha) || github.event.pull_request.head.sha,
+              head_sha: head_sha || context.sha,
               status: "completed",
               conclusion,
               output: {
@@ -89,11 +130,19 @@ jobs:
               }
             });
 
-      - name: Block merge on HIGH risk
-        if: steps.engine.outputs.risk == 'HIGH'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Request changes on HIGH risk (trusted-only; skip on untrusted events)
+        if: steps.run_engine.outputs.risk == 'HIGH'
         run: |
-          gh pr review ${{ github.event.pull_request.number }} \
-            --request-changes \
-            -b "@ethics-team Required manual review for high-risk change"
+          PR=${{ steps.prnumber.outputs.pr_number }}
+          # Only attempt to request changes when running in pull_request_target context (trusted).
+          if [[ "${GITHUB_EVENT_NAME}" != "pull_request_target" ]]; then
+            echo "Not in pull_request_target context; skipping request-changes (insufficient permissions for fork PRs)."
+            exit 0
+          fi
+          # Request changes using gh (GITHUB_TOKEN from pull_request_target has write rights)
+          gh pr review "$PR" --request-changes -b "@ethics-team Required manual review for high-risk change"
+          echo "Requested changes on PR #$PR due to HIGH risk."
+
+      - name: Final status message
+        run: |
+          echo "Ethics engine completed. Risk level: ${{ steps.run_engine.outputs.risk }}"
