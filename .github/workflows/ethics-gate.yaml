@@ -146,3 +146,4 @@ jobs:
       - name: Final status message
         run: |
           echo "Ethics engine completed. Risk level: ${{ steps.run_engine.outputs.risk }}"
+          echo "Ethics engine completed. Risk level: ${{ steps.run_engine.outputs.risk }}"
