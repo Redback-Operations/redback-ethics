@@ -21,7 +21,6 @@ def find_files(directory, exts=None):
 
     return matches
 
-
 def read_file(path):
     lower_path = path.lower()
     if lower_path.endswith('.docx'):
