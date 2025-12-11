@@ -1,36 +1,40 @@
-**Ethics & Regulatory Questionnaire**  
-*This PR cannot be merged until this form is completed.*
+**Pull Request Ethics, Security & Compliance Checklist**  
+*(Mandatory for all pull requests. This helps you develop professional habits required in industry and academia.)*
 
-Please reply to this comment and answer all questions below (you can copy-paste and fill it).
+1. Nature of the contribution (select all that apply)  
+   - [ ] Purely non-functional changes (documentation, formatting, tests, CI/CD, refactoring without behavioral change)  
+   - [ ] Introduction or modification of cryptographic functions or security-critical code  
+   - [ ] Collection, storage, transmission, or processing of personal data (PII, health data, biometric data, location, etc.)  
+   - [ ] Use or processing of data belonging to children under 13 (or reasonably likely to include such data)  
+   - [ ] Implementation or modification of AI/ML models (training, fine-tuning, inference, prompt engineering)  
+   - [ ] Code interacting with external networks, APIs, or third-party services  
 
-1. Does this change involve any of the following? (check all that apply)  
-   - [ ] Training or fine-tuning of AI/ML models  
-   - [ ] Inference/serving of AI/ML models in production  
-   - [ ] Processing of personal data (PII, health, biometric, financial, children’s data, etc.)  
-   - [ ] Dual-use or military-applicable technology  
-   - [ ] Safety-critical systems (medical device, aviation, automotive, etc.)  
-   - [ ] High-impact algorithmic decision-making (credit, hiring, criminal justice, etc.)  
-   - [ ] None of the above (pure docs, tests, CI, formatting, etc.)
+2. Security & responsible practice assessment  
+   - [ ] No security, privacy, or ethical implications identified  
+   - [ ] Potential security or privacy implications present (e.g., input validation, error handling, data exposure)  
+   - [ ] High-risk implications (potential for unauthorized access, data leakage, bias, or legal non-compliance)
 
-2. Estimated risk level (your honest assessment)  
-   - [ ] Low – no ethical or regulatory impact  
-   - [ ] Medium – possible fairness/privacy concerns  
-   - [ ] High – potential for serious harm or legal non-compliance
-
-3. Brief description of any ethical/regulatory impact (or write “None”)
-
+3. Relevant laws, regulations, and frameworks considered (list all that may apply, or if none, refer to content in D2L Ethics module)  
+   Examples:  
+   - Australian Privacy Act 1988 (Cth) & Privacy Amendment (Notifiable Data Breaches) Act 2017  
+   - GDPR (EU), CCPA/CPRA (California), COPPA (US children’s privacy)  
+   - University Human Research Ethics requirements (HREC/NHRMC)  
+   - NIST Cybersecurity Framework / OWASP Top 10 / ASVS  
+   - ISO/IEC 27001, NIST AI Risk Management Framework (AI RMF)  
+   - Export controls (ITAR, EAR, Australian Defence Export Controls)  
    > 
 
-4. Relevant regulations / standards considered (e.g., EU AI Act, GDPR, HIPAA, NIST AI RMF, export controls, etc.)  
-   List them or write “N/A”
-
+4. Security and responsible engineering measures implemented (select and describe)  
+   - [ ] Yes — specify below (e.g., input sanitization, prepared statements, least-privilege access, data minimization, anonymization, secure defaults, dependency scanning, bias audit, consent mechanism, etc.)  
+   - [ ] Partially implemented — further review recommended  
+   - [ ] No — measures appear necessary  
+   - [ ] Not applicable  
    > 
 
-5. Have mitigation measures been implemented (bias testing, data minimization, consent flows, etc.)?  
-   - [ ] Yes → describe below  
-   - [ ] No  
-   - [ ] Not applicable
-
+5. Additional notes (optional)  
+   Any references to secure coding guidelines followed (e.g., ISO27001, OWASP Secure Coding Practices, university security standards), vulnerability scans performed, or ethical review status.  
    > 
 
-Thank you! The ethics gate will evaluate your answers automatically.
+By submitting this pull request, I confirm I have considered the security, privacy, and ethical implications of my contribution in accordance with university policy and applicable legal and professional standards.
+
+Thank you for helping maintain a secure and responsible codebase.
