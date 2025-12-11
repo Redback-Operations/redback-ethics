@@ -185,7 +185,7 @@ def parse_args(argv=None):
         "--ext", nargs="*", default=[".txt", ".json"], help="File extensions to include (e.g., .txt .pdf)"
     )
     ap.add_argument(
-        "--out", default="scan_report.json", help="Output file for results"
+        "--out", default="scan_report.local.json", help="Output file for results"
     )
     return ap.parse_args(argv or sys.argv[1:])
 
