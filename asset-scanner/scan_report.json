@@ -1,0 +1,231 @@
+[
+  {
+    "pattern": "email",
+    "description": "Detected EMAIL_ADDRESS",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 2,
+    "risk": "Low",
+    "tip": "Mask or obfuscate emails in logs/code unless strictly required; avoid storing in repos.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+      "GDPR Art. 5(1)(c) \u2014 Data minimisation",
+      "GDPR Art. 32 \u2014 Security of processing",
+      "GDPR Recital 30 \u2014 Online identifiers"
+    ],
+    "raw": "ramonricgarcia@gmail.com"
+  },
+  {
+    "pattern": "full_name",
+    "description": "Detected PERSON",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 1,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "Ramon Garcia"
+  },
+  {
+    "pattern": "url",
+    "description": "Detected URL",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 2,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "www.linkedin.com/in/ramon-garcia-081a471a6"
+  },
+  {
+    "pattern": "location",
+    "description": "Detected LOCATION",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 5,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "Burwood"
+  },
+  {
+    "pattern": "date_time",
+    "description": "Detected DATE_TIME",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 6,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "March 2022"
+  },
+  {
+    "pattern": "date_time",
+    "description": "Detected DATE_TIME",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 6,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "October 2026"
+  },
+  {
+    "pattern": "date_time",
+    "description": "Detected DATE_TIME",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 8,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "December 2021"
+  },
+  {
+    "pattern": "date_time",
+    "description": "Detected DATE_TIME",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 10,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "April 2022"
+  },
+  {
+    "pattern": "full_name",
+    "description": "Detected PERSON",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 15,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "Connor Clothing"
+  },
+  {
+    "pattern": "date_time",
+    "description": "Detected DATE_TIME",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 15,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "2024"
+  },
+  {
+    "pattern": "full_name",
+    "description": "Detected PERSON",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 15,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "Connor"
+  },
+  {
+    "pattern": "date_time",
+    "description": "Detected DATE_TIME",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 17,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "March 2022"
+  },
+  {
+    "pattern": "date_time",
+    "description": "Detected DATE_TIME",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 21,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "January 2021"
+  },
+  {
+    "pattern": "location",
+    "description": "Detected LOCATION",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 29,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "Johntheripper"
+  },
+  {
+    "pattern": "url",
+    "description": "Detected URL",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 2,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "gmail.com"
+  },
+  {
+    "pattern": "phone",
+    "description": "Detected PHONE_NUMBER",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\RamonGarcia2025.docx",
+    "line": 2,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "0412-145-123"
+  },
+  {
+    "pattern": "date_time",
+    "description": "Detected DATE_TIME",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\testdocument.docx",
+    "line": 3,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "04/09/2003"
+  },
+  {
+    "pattern": "full_name",
+    "description": "Detected PERSON",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\testdocument.docx",
+    "line": 2,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "Prospector Drive Cairnlea"
+  },
+  {
+    "pattern": "phone",
+    "description": "Detected PHONE_NUMBER",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\testdocument.docx",
+    "line": 1,
+    "risk": "Low",
+    "tip": "Follow secure handling and removal procedures.",
+    "law": "General Best Practice",
+    "compliance": [],
+    "raw": "0412145123"
+  },
+  {
+    "pattern": "medicare_number",
+    "description": "Australian Medicare number",
+    "file": "C:\\Users\\ramon\\Desktop\\testforethics\\testdocument.docx",
+    "line": 1,
+    "risk": "High",
+    "tip": "Treat Medicare numbers as sensitive; minimise collection; avoid code/logs; secure storage and transmission.",
+    "law": "Privacy Act 1988 (Cth) \u2014 APP 9 (Government related identifiers)",
+    "compliance": [
+      "Privacy Act 1988 (Cth) \u2014 APP 9 (Government related identifiers)",
+      "Privacy Act 1988 (Cth) \u2014 APP 11 (Security of personal information)",
+      "Privacy Act 1988 (Cth) \u2014 Notifiable Data Breaches (Part IIIC)"
+    ],
+    "raw": "0412145123"
+  }
+]

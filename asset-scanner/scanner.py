@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-
-#!/usr/bin/env python3
 """
 scanner.py — Redback Ethics PII & Secrets Scanner (Presidio-powered)
 
@@ -140,34 +138,55 @@ def scan_text(text: str, file_path: str, analyzer: AnalyzerEngine, patterns_meta
 
     return findings
 
+def scan_folder_or_file(file=None, root=None, extensions=None):
+    """Scan either a single file or all relevant files in the folder."""
+    if file:
+        # Single file scan
+        return [file]  # Return as a single-element list for compatibility
+    else:
+        # Scan entire folder
+        return find_files(root, exts=extensions)
+
 # file scanner
-def scan_paths(paths: Iterable[str], analyzer: AnalyzerEngine, patterns_meta: Dict) -> List[Dict[str, Any]]:
+def scan_paths(paths, analyzer, patterns_meta):
+    """Process and scan all provided files."""
     all_findings = []
-    for path in paths:
-        print(f"\n[i] Reading: {path}")
-        content = read_file(path)
-        if isinstance(content, bytes):
-            try:
-                content = content.decode("utf-8")
-            except:
-                content = content.decode("latin-1", errors="ignore")
-        if isinstance(content, str) and content.strip():
-            print(f"    → Extracted {len(content):,} characters")
-            all_findings.extend(scan_text(content, path, analyzer, patterns_meta))
-        else:
-            print("    → No text extracted (image-only PDF?)")
+
+    for path in paths:  # Loop through `paths`, one file at a time
+        print(f"[i] Scanning file: {path}")  # Log the file being scanned
+        try:
+            content = read_file(path)  # Pass a single file to `read_file()`
+            if not content.strip():  # Skip empty or unsupported files
+                print(f"[i] Skipping unsupported or empty file: {path}")
+                continue
+
+            # Scan file content
+            findings = scan_text(content, path, analyzer, patterns_meta)
+            all_findings.extend(findings)  # Collect results
+        except Exception as e:
+            print(f"[!] Error processing file {path}: {e}")
+            continue  # Skip to the next file on error
+
     return all_findings
 
 # CLI & main
 def parse_args(argv=None):
-    # parse_args function
     ap = argparse.ArgumentParser(description="Sensitive data scanner")
-    ap.add_argument("--file", help="Single file to scan")
-    ap.add_argument("--root", default=".", help="Root directory")
-    ap.add_argument("--patterns", default=DEFAULT_PATTERNS_FILE)
-    ap.add_argument("--out", default=DEFAULT_OUT)
-    ap.add_argument("--ext", nargs="*", default=DEFAULT_TARGET_EXTS)
-    ap.add_argument("--no-console", action="store_true")
+    ap.add_argument(
+        "--file", nargs="*", help="One or more specific files to scan (space-separated list)"
+    )  # `nargs="*"` allows multiple files
+    ap.add_argument(
+        "--root", nargs="*", help="One or more directories for recursive scanning"
+    )
+    ap.add_argument(
+        "--patterns", default="patterns.json", help="Path to patterns.json"
+    )
+    ap.add_argument(
+        "--ext", nargs="*", default=[".txt", ".json"], help="File extensions to include (e.g., .txt .pdf)"
+    )
+    ap.add_argument(
+        "--out", default="scan_report.json", help="Output file for results"
+    )
     return ap.parse_args(argv or sys.argv[1:])
 
 def get_valid_path():
@@ -180,24 +199,39 @@ def get_valid_path():
         print("Invalid path, try again.")
 
 def main():
-    ns = parse_args()
+    # Parse arguments from the CLI
+    ns = parse_args()  # Contains file, root, patterns, ext, and out args
+
+    # Load patterns and initialize the analyzer
     patterns_meta = load_patterns(ns.patterns)
     analyzer = get_analyzer()
 
-    if ns.file:
-        paths = [ns.file]
-        print(f"[i] Scanning single file: {ns.file}")
-    else:
-        directory = get_valid_path()
-        paths = list(find_files(directory, ns.ext))
-        print(f"[i] Found {len(paths)} files to scan in {directory}")
+    # Determine files to scan (using --file and --root)
+    paths = []  # Initialize an empty list to store all files
+    if ns.file:  # Add files passed using the --file argument
+        paths.extend(ns.file)  # ns.file is already a list of files
 
+    if ns.root:  # Add files from folders passed using --root
+        for folder in ns.root:
+            folder_files = find_files(folder, extensions=ns.ext)  # Recursively find files
+            paths.extend(folder_files)
+
+    # Validate if any files were found
+    if not paths:
+        print("[!] No files found to scan. Please check your input.")
+        return 0
+
+    print(f"[i] Found {len(paths)} files to scan.")
+
+    # Scan the files
     findings = scan_paths(paths, analyzer, patterns_meta)
 
+    # Write the scan results to an output report file
     enriched = write_report(findings, out_path=ns.out)
     print(f"\n[i] Full report (with paths & raw PII) saved locally → {ns.out}")
     print("    This file is git-ignored and must NEVER be committed.")
 
+    # Handle scan results and risk evaluation
     if any(f.get("risk") == "High" for f in enriched):
         print("\n[!] HIGH-RISK PII DETECTED → SCAN FAILED")
         return 1
@@ -205,7 +239,7 @@ def main():
         print(f"\n[i] {len(findings)} findings → check {ns.out}")
     else:
         print("\n[Success] NO PII FOUND!")
-    return 0
+    return
 
 if __name__ == "__main__":
     raise SystemExit(main())
