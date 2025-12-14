@@ -7,6 +7,7 @@ This repository will host the source code for a GitHub app designed to detect se
 - **Automated Scanning**: Identifies sensitive data patterns in text, PDFs, images, and more.
 - **GitHub Integration**: Triggered by repository events, such as file uploads, commits, or pull requests.
 - **Detailed Reports**: Provides actionable insights and flags files containing sensitive information, and how to resolve them.
+- **Automated Questionnaire Form**: Every pull request has a questionnaire automatically pushed to educate developers and users.
 
 ### **Expected Supported File Types (so far)**
 - Text files (`.txt`)
